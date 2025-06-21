@@ -1,70 +1,44 @@
-# Getting Started with Create React App
+# 🐰 Bunny Farm Game
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> 귀여운 토끼와 함께 당근 농장을 가꾸는 키우기 게임!  
+> 밭을 일구고, 당근을 수확하고, 상점에서 악세서리를 구매해 토끼를 꾸며보세요!
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🛠 프로젝트 실행 방법
 
-### `npm start`
+### 1. 설치
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```bash
+npm install
+npm start
+🎮 주요 기능
+⏳ 시간 흐름에 따른 배경 변화 (아침/낮/저녁/밤)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+🥕 1초마다 자동 당근 수확
+🐰 토끼 캐릭터 커스터마이징 (악세서리 착용)
+🌱 밭 클릭 시 토끼 이동 및 작업 애니메이션
+🛍️ 상점 시스템 (악세서리 / 자동수확 업그레이드 구매)
+🔔 알림 시스으로 행동 피드백 제공
 
-### `npm test`
+📁 폴더 구조
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+src/
+  components/       # UI 구성 요소 (토끼, 상점, 밭 등)
+  hooks/            # 커스텀 훅 (예: 자동 수확)
+  assets/           # 이미지 등 정적 자원
+  App.js            # 메인 게임 로직
+  index.js          # 엔트리 포인트
+📦 빌드
+bash
+복사
+편집
+npm run build
+build/ 폴더에 최적화된 프로덕션 파일이 생성됩니다.
 
-### `npm run build`
+🚀 배포 (옵션)
+Netlify, Vercel, GitHub Pages 등 정적 호스팅 서비스로 배포할 수 있습니다.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+📄 라이선스
+MIT License
+© 2025 suhyunle
