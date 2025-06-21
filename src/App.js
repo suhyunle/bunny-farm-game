@@ -1,30 +1,35 @@
+// App.js
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
 import CarrotCounter from './components/CarrotCounter';
 import BunnyDisplay from './components/BunnyDisplay';
-import AccessoryShop from './components/AccessoryShop';
+import AccessoryShop from './components/shop/AccessoryShop';
 import UpgradeShop from './components/UpgradeShop';
-import FarmGrid from './components/FarmGrid';
+import FarmGrid from './components/farm/FarmGrid';
 import Notification from './components/Notification';
 import useAutoHarvest from './hooks/useAutoHarvest';
+
+import InventoryComponent from './components/Inventory/InventoryComponent';
+import VillageComponent from './components/Village/VillageComponent';
+import SettingsComponent from './components/Settings/SettingsComponent';
+import NavBar from './components/Navbar';
 
 function App() {
     const [carrots, setCarrots] = useState(100);
     const [bunnyStyle, setBunnyStyle] = useState(null);
     const [bunnyAction, setBunnyAction] = useState('idle');
-    const [bunnyPosition, setBunnyPosition] = useState({ top: 200, left: 200 });
-
     const [farmTiles, setFarmTiles] = useState([
         { id: 1, step: 'clearing', progress: 0, completed: false, position: { top: 300, left: 150 } },
         { id: 2, step: 'clearing', progress: 0, completed: false, position: { top: 300, left: 350 } },
         { id: 3, step: 'clearing', progress: 0, completed: false, position: { top: 300, left: 550 } },
     ]);
-
     const [autoHarvest, setAutoHarvest] = useState(false);
     const [notifications, setNotifications] = useState([]);
     const [tab, setTab] = useState('farm');
     const [backgroundIndex, setBackgroundIndex] = useState(1);
+    const [bunnyPosition, setBunnyPosition] = useState({ top: 200, left: 200 });
+    const [nickname, setNickname] = useState('이름 없는 토끼');
 
     useAutoHarvest(autoHarvest, farmTiles, setFarmTiles, setCarrots);
 
@@ -46,20 +51,15 @@ function App() {
         const tile = farmTiles.find(t => t.id === tileId);
         if (tile) {
             setBunnyPosition(tile.position);
-
             const actionMap = {
                 clearing: 'bunny-seed',
                 watering: 'bunny-water',
                 harvesting: 'bunny-get',
                 resting: 'bunny-sleep',
             };
-
             const action = actionMap[tile.step] || 'idle';
             setBunnyAction(action);
-
-            setTimeout(() => {
-                setBunnyAction('idle');
-            }, 2000);
+            setTimeout(() => setBunnyAction('idle'), 2000);
         }
     };
 
@@ -80,12 +80,9 @@ function App() {
                 overflow: 'hidden',
             }}
         >
-            <h1>🐰 토끼의 당근 농장</h1>
+            <h1>🐰 {nickname}의 당근 농장</h1>
 
-            <div style={{ marginBottom: '1.5rem' }}>
-                <button onClick={() => setTab('farm')} style={{ marginRight: '1rem' }}>🌾 농장</button>
-                <button onClick={() => setTab('shop')}>🛍 상점</button>
-            </div>
+            <NavBar currentTab={tab} onTabChange={setTab} />
 
             <CarrotCounter carrots={carrots} />
 
@@ -97,7 +94,7 @@ function App() {
                     transition: 'top 1s ease, left 1s ease',
                 }}
             >
-                <BunnyDisplay action={bunnyAction} style={bunnyStyle} />
+                <BunnyDisplay style={bunnyStyle} action={bunnyAction} />
             </div>
 
             {tab === 'farm' && (
@@ -127,10 +124,18 @@ function App() {
                 </>
             )}
 
+            {tab === 'inventory' && <InventoryComponent />}
+            {tab === 'village' && <VillageComponent />}
+            {tab === 'settings' && (
+                <SettingsComponent
+                    nickname={nickname}
+                    setNickname={setNickname}
+                />
+            )}
+
             <Notification notifications={notifications} setNotifications={setNotifications} />
         </div>
     );
 }
-
 
 export default App;

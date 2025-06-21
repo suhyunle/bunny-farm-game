@@ -1,5 +1,5 @@
 import React from 'react';
-import { accessories } from '../data/accessories';
+import { accessories } from '../../data/accessories';
 
 function AccessoryShop({ carrots, setCarrots, setBunnyStyle }) {
     const buyItem = (item) => {
